@@ -7,7 +7,7 @@ const Pharmacy = () => {
       <Head>
         <title>Pharmacy - Ansari hospital</title>
       </Head>
-      <div>Pharmacy</div>;
+      <div>Pharmacy</div>
     </>
   );
 };

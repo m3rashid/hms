@@ -7,7 +7,7 @@ const Admin = () => {
       <Head>
         <title>Admin - Ansari hospital</title>
       </Head>
-      <div>Admin</div>;
+      <div>Admin</div>
     </>
   );
 };

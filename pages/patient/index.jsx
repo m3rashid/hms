@@ -7,7 +7,7 @@ const Patient = () => {
       <Head>
         <title>Patients - Ansari hospital</title>
       </Head>
-      <div>Patient</div>;
+      <div>Patient</div>
     </>
   );
 };

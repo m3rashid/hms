@@ -1,23 +1,23 @@
-import { Button, Text } from "@mantine/core";
+import { Button } from "@mantine/core";
 import { useModals } from "@mantine/modals";
+import { Cross1Icon } from "@modulz/radix-icons";
 
-const Login = () => {
+function Demo({ title, children }) {
   const modals = useModals();
 
-  const openConfirmModal = () =>
-    modals.openConfirmModal({
-      title: "Please confirm your action",
+  const openContentModal = () => {
+    const id = modals.openModal({
+      title: title,
       children: (
-        <Text size="sm">
-          This action is so important that you are required to confirm it with a
-          modal. Please click one of these buttons to proceed.
-        </Text>
+        <>
+          <Button fullWidth onClick={() => modals.closeModal(id)}>
+            <Cross1Icon />
+          </Button>
+          {children}
+        </>
       ),
-      labels: { confirm: "Confirm", cancel: "Cancel" },
-      onCancel: () => console.log("Cancel"),
-      onConfirm: () => console.log("Confirmed"),
     });
+  };
 
-  return <Button onClick={openConfirmModal}>Open confirm modal</Button>;
-};
-export default Login;
+  return openContentModal;
+}
