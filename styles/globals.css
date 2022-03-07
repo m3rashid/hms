@@ -14,3 +14,19 @@ a {
 * {
   box-sizing: border-box;
 }
+
+.leftSidebarInnerContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+  gap: "20px";
+  margin-bottom: 10px;
+  padding: 5px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.leftSidebarInnerContainer:hover {
+  background-color: "rgba(231, 245, 255, 1)";
+}

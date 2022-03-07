@@ -1,26 +1,48 @@
 import DetailCard from "../components/card";
-import { Container } from "@mantine/core";
+import { Container, Image } from "@mantine/core";
+
+const containerStyle = {
+  display: "flex",
+  flexWrap: "wrap",
+  gap: "15px",
+  marginBottom: "50px",
+};
 
 function Home() {
   return (
-    <Container
-      fluid
-      style={{
-        display: "flex",
-        flexWrap: "wrap",
-        gap: "15px",
-      }}
-    >
-      <DetailCard
-        imageSrc="/images/reception"
-        imageAlt=""
-        buttonTitle="Reception"
-        buttonClick={() => console.log("this")}
-      />
-      <DetailCard imageSrc={null} imageAlt="" buttonTitle="Doctor" />
-      <DetailCard imageSrc={null} imageAlt="" buttonTitle="Pharmacy" />
-      <DetailCard imageSrc={null} imageAlt="" buttonTitle="Admin" />
-    </Container>
+    <>
+      <Container fluid style={containerStyle}>
+        <Image
+          src="/images/hospital.jpeg"
+          height={500}
+          alt="hospital"
+          style={{ width: "100%", objectFit: "none" }}
+        />
+      </Container>
+      <Container fluid style={containerStyle}>
+        <DetailCard
+          imageSrc="/images/reception.jpg"
+          imageAlt=""
+          buttonTitle="Reception"
+          buttonClick={() => console.log("this")}
+        />
+        <DetailCard
+          imageSrc="/images/doctor.jpg"
+          imageAlt=""
+          buttonTitle="Doctor"
+        />
+        <DetailCard
+          imageSrc="/images/pharmacy.jpg"
+          imageAlt=""
+          buttonTitle="Pharmacy"
+        />
+        <DetailCard
+          imageSrc="/images/admin.jpeg"
+          imageAlt=""
+          buttonTitle="Admin"
+        />
+      </Container>
+    </>
   );
 }
 

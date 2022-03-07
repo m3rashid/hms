@@ -1,14 +1,5 @@
 import React from "react";
-import {
-  AppShell,
-  Burger,
-  Header,
-  MediaQuery,
-  Navbar,
-  Text,
-  useMantineTheme,
-  MantineProvider,
-} from "@mantine/core";
+import { Burger, Header, MediaQuery } from "@mantine/core";
 
 const TopHeader = ({ opened, setOpened, theme }) => {
   return (
@@ -30,7 +21,7 @@ const TopHeader = ({ opened, setOpened, theme }) => {
           />
         </MediaQuery>
 
-        <Text>Ansari Hospital</Text>
+        <h1>Ansari Hospital</h1>
       </div>
     </Header>
   );

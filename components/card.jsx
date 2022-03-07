@@ -15,6 +15,7 @@ const DetailCard = ({
   title,
   buttonTitle,
   buttonClick,
+  badge,
 }) => {
   const theme = useMantineTheme();
 
@@ -25,7 +26,7 @@ const DetailCard = ({
     <div style={{ width: 340, margin: "auto" }}>
       <Card shadow="sm" padding="lg">
         <Card.Section>
-          <Image src={imageSrc} height={160} alt={imageAlt || ""} />
+          <Image src={imageSrc} height={200} alt={imageAlt || ""} />
         </Card.Section>
 
         <Group
@@ -33,6 +34,11 @@ const DetailCard = ({
           style={{ marginBottom: 5, marginTop: theme.spacing.sm }}
         >
           <Text weight={500}>{title}</Text>
+          {badge && (
+            <Badge color="pink" variant="light">
+              {badge}
+            </Badge>
+          )}
         </Group>
 
         <Text size="sm" style={{ color: secondaryColor, lineHeight: 1.5 }}>
