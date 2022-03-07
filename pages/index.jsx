@@ -1,5 +1,6 @@
-import DetailCard from "../components/card";
 import { Container, Image } from "@mantine/core";
+import Head from "next/head";
+import DetailCard from "../components/card";
 
 const containerStyle = {
   display: "flex",
@@ -11,6 +12,9 @@ const containerStyle = {
 function Home() {
   return (
     <>
+      <Head>
+        <title>Home - Ansari hospital</title>
+      </Head>
       <Container fluid style={containerStyle}>
         <Image
           src="/images/hospital.jpeg"
