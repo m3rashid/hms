@@ -1,0 +1,119 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Level {
+  ADMIN
+  DOCTOR
+  RECEPTIONIST
+  PHARMACIST
+}
+
+model Auth {
+  id           String         @id @default(uuid())
+  username     String
+  password     String
+  level        Level
+  createdAt    DateTime       @default(now())
+  updatedAt    DateTime       @default(now())
+  Receptionist Receptionist[]
+  Doctor       Doctor[]
+}
+
+model Receptionist {
+  id        String   @id @default(uuid())
+  name      String
+  contact   String
+  auth      Auth     @relation(fields: [authId], references: [id])
+  authId    String
+  email     String   @unique
+  address   String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now())
+}
+
+model Doctor {
+  id           String        @id @default(uuid())
+  name         String
+  availability Boolean
+  age          Int
+  designation  String
+  contact      String
+  email        String        @unique
+  address      String
+  auth         Auth          @relation(fields: [authId], references: [id])
+  authId       String
+  createdAt    DateTime      @default(now())
+  updatedAt    DateTime      @default(now())
+  Appointment  Appointment[]
+}
+
+model Patient {
+  id          String        @id @default(uuid())
+  name        String
+  age         Int
+  gender      String
+  lastVisit   DateTime
+  contact     String
+  address     String
+  email       String
+  jamiaId     String
+  createdAt   DateTime      @default(now())
+  updatedAt   DateTime      @default(now())
+  Appointment Appointment[]
+}
+
+model Prescription {
+  id             String   @id @default(uuid())
+  patientId      String
+  doctorId       String
+  appointmentId  String
+  description    String
+  medicineId     String
+  datePrescribed DateTime
+  dateExpiring   DateTime
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @default(now())
+}
+
+model Appointment {
+  id        String   @id @default(uuid())
+  patient   Patient  @relation(fields: [patientId], references: [id])
+  patientId String
+  doctor    Doctor   @relation(fields: [doctorId], references: [id])
+  doctorId  String
+  date      DateTime
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now())
+}
+
+model Medicine {
+  id    String  @id @default(uuid())
+  name  String
+  price Decimal
+}
+
+model Pharmacy {
+  id          String   @id @default(uuid())
+  name        String
+  stock       Int
+  batchNo     Int
+  description String
+  expiryDate  DateTime
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @default(now())
+}
+
+model LabReport {
+  id         String   @id @default(uuid())
+  patientId  String
+  doctorId   String
+  reportType String
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @default(now())
+}

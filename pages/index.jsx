@@ -1,5 +1,8 @@
+import Image from "next/image";
+import Head from "next/head";
+import { useRouter } from "next/router";
+
 import DetailCard from "../components/card";
-import { Container, Image } from "@mantine/core";
 
 const containerStyle = {
   display: "flex",
@@ -8,42 +11,60 @@ const containerStyle = {
   marginBottom: "50px",
 };
 
-function Home() {
+const Home = () => {
+  const router = useRouter();
+  const userLoggedIn = true;
+
+  const handleAuth = (e) => {
+    const type = e.target.innerText.toLowerCase();
+    if (userLoggedIn) {
+      router.push(`/${type}`);
+    } else {
+      // open the auth modal
+    }
+  };
+
   return (
     <>
-      <Container fluid style={containerStyle}>
+      <Head>
+        <title>Home - Ansari hospital</title>
+      </Head>
+      <div style={containerStyle}>
         <Image
           src="/images/hospital.jpeg"
-          height={500}
           alt="hospital"
-          style={{ width: "100%", objectFit: "none" }}
+          width={100}
+          height={100}
         />
-      </Container>
-      <Container fluid style={containerStyle}>
+      </div>
+      <div fluid style={containerStyle}>
         <DetailCard
           imageSrc="/images/reception.jpg"
           imageAlt=""
           buttonTitle="Reception"
-          buttonClick={() => console.log("this")}
+          buttonClick={handleAuth}
         />
         <DetailCard
           imageSrc="/images/doctor.jpg"
           imageAlt=""
           buttonTitle="Doctor"
+          buttonClick={handleAuth}
         />
         <DetailCard
           imageSrc="/images/pharmacy.jpg"
           imageAlt=""
           buttonTitle="Pharmacy"
+          buttonClick={handleAuth}
         />
         <DetailCard
           imageSrc="/images/admin.jpeg"
           imageAlt=""
           buttonTitle="Admin"
+          buttonClick={handleAuth}
         />
-      </Container>
+      </div>
     </>
   );
-}
+};
 
 export default Home;
