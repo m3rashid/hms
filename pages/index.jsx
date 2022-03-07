@@ -2,6 +2,7 @@ import Image from "next/image";
 import Head from "next/head";
 import { useRouter } from "next/router";
 
+
 import DetailCard from "../components/card";
 
 const containerStyle = {
@@ -30,6 +31,7 @@ const Home = () => {
         <title>Home - Ansari hospital</title>
       </Head>
       <div style={containerStyle}>
+
         <Image
           src="/images/hospital.jpeg"
           alt="hospital"
