@@ -30,38 +30,13 @@ const Home = () => {
         <title>Home - Ansari hospital</title>
       </Head>
       <div style={containerStyle}>
-        <Image
-          src="/images/hospital.jpeg"
-          alt="hospital"
-          width={100}
-          height={100}
-        />
+        <Image src="/images/hospital.jpeg" alt="hospital" width={100} height={100} />
       </div>
       <div style={containerStyle}>
-        <DetailCard
-          imageSrc="/images/reception.jpg"
-          imageAlt=""
-          buttonTitle="Reception"
-          buttonClick={handleAuth}
-        />
-        <DetailCard
-          imageSrc="/images/doctor.jpg"
-          imageAlt=""
-          buttonTitle="Doctor"
-          buttonClick={handleAuth}
-        />
-        <DetailCard
-          imageSrc="/images/pharmacy.jpg"
-          imageAlt=""
-          buttonTitle="Pharmacy"
-          buttonClick={handleAuth}
-        />
-        <DetailCard
-          imageSrc="/images/admin.jpeg"
-          imageAlt=""
-          buttonTitle="Admin"
-          buttonClick={handleAuth}
-        />
+        <DetailCard imageSrc="/images/reception.jpg" imageAlt="" buttonTitle="Reception" buttonClick={handleAuth} />
+        <DetailCard imageSrc="/images/doctor.jpg" imageAlt="" buttonTitle="Doctor" buttonClick={handleAuth} />
+        <DetailCard imageSrc="/images/pharmacy.jpg" imageAlt="" buttonTitle="Pharmacy" buttonClick={handleAuth} />
+        <DetailCard imageSrc="/images/admin.jpeg" imageAlt="" buttonTitle="Admin" buttonClick={handleAuth} />
       </div>
     </>
   );

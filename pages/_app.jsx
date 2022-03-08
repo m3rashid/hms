@@ -1,9 +1,14 @@
+import Sidebar from "../components/Sidebar/Sidebar";
 import "../styles/globals.css";
-
+import Layout from "../components/Layout/Layout";
 function MyApp({ Component, pageProps }) {
   return (
     <>
-      <Component {...pageProps} />
+      <Sidebar />
+
+      <Layout>
+        <Component {...pageProps} />
+      </Layout>
     </>
   );
 }
