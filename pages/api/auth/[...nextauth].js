@@ -2,6 +2,9 @@ import NextAuth from "next-auth/next";
 import CredentialsProvider from "next-auth/providers/credentials";
 
 export default NextAuth({
+  session: {
+    jwt: true,
+  },
   providers: [
     // credentials provider for local auth
     CredentialsProvider({
@@ -19,9 +22,19 @@ export default NextAuth({
         // look for user in the database
         const user = undefined;
         if (user) {
-          return user;
+          const isValid = await verifyPassword(
+            credentials.password,
+            user.password
+          );
+          if (!isValid) {
+            throw new Error("Could not verify password");
+          }
+          return {
+            email: user.email,
+            level: user.level,
+          };
         } else {
-          return null;
+          throw new Error("User not found");
         }
       },
     }),

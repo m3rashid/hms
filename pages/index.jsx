@@ -2,11 +2,11 @@ import Image from "next/image";
 import Head from "next/head";
 import { useRouter } from "next/router";
 
-import DetailCard from "../components/card";
-import Login from "../components/login/login";
+import DetailCard from "../components/card/card";
 
 const containerStyle = {
   display: "flex",
+  justifyContent: "center",
   flexWrap: "wrap",
   gap: "15px",
   marginBottom: "50px",
@@ -34,11 +34,10 @@ const Home = () => {
         <Image
           src="/images/hospital.jpeg"
           alt="hospital"
-          width={100}
-          height={100}
+          height={353}
+          width={1280}
         />
       </div>
-      <Login />
       <div style={containerStyle}>
         <DetailCard
           imageSrc="/images/reception.jpg"

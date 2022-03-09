@@ -7,15 +7,30 @@ import {
   SidebarContent,
 } from "react-pro-sidebar";
 import Link from "next/link";
-
-import { FaStoreAlt, FaRegHeart, FaSignal, FaUserAlt } from "react-icons/fa";
+import {
+  FaStoreAlt,
+  FaRegHeart,
+  FaSignal,
+  FaUserAlt,
+  FaUserCog,
+} from "react-icons/fa";
 import { FiHome, FiLogOut } from "react-icons/fi";
 import { BiCog } from "react-icons/bi";
-
 import "react-pro-sidebar/dist/css/styles.css";
+import { useRouter } from "next/router";
+
 import classes from "./Sidebar.module.css";
 
 const Sidebar = () => {
+  const router = useRouter();
+  // check for user logged in
+  const user = {
+    loggedIn: true,
+    level: "ADMIN",
+  };
+
+  const admin = user.loggedIn && user.level === "ADMIN";
+
   return (
     <>
       <div className={`${classes["sidebar-container"]} `}>
@@ -36,20 +51,49 @@ const Sidebar = () => {
               <Link href="/pharmacy" passHref>
                 <MenuItem icon={<FaStoreAlt />}>Pharmacy</MenuItem>
               </Link>
-              <Link href="/admin" passHref>
-                <MenuItem icon={<BiCog />}>Admin</MenuItem>
-              </Link>
               <Link href="/patient" passHref>
                 <MenuItem icon={<FaUserAlt />}>Patient</MenuItem>
               </Link>
+              {admin && <div className="admin-break"></div>}
+              <Link href="/admin" passHref>
+                <MenuItem icon={<FaUserCog />}>
+                  Admin {admin && "Home"}
+                </MenuItem>
+              </Link>
+              {admin && (
+                <div className={classes["admin-routes"]}>
+                  <Link href="/admin/receptionists" passHref>
+                    <div>
+                      <BiCog /> Receptionists
+                    </div>
+                  </Link>
+                  <br />
+                  <Link href="/admin/doctors" passHref>
+                    <div>
+                      <BiCog /> Doctors
+                    </div>
+                  </Link>
+                  <br />
+                  <Link href="/admin/patients" passHref>
+                    <div>
+                      <BiCog /> Patients
+                    </div>
+                  </Link>
+                  <br />
+                </div>
+              )}
             </Menu>
           </SidebarContent>
-          <SidebarFooter>
-            {/* check if user logged in */}
-            <Menu iconShape="square">
-              <MenuItem icon={<FiLogOut />}>Logout</MenuItem>
-            </Menu>
-          </SidebarFooter>
+          {user.loggedIn && (
+            <SidebarFooter>
+              <Menu>
+                <MenuItem>AUTH as {user.level}</MenuItem>
+              </Menu>
+              <Menu iconShape="square">
+                <MenuItem icon={<FiLogOut />}>Logout</MenuItem>
+              </Menu>
+            </SidebarFooter>
+          )}
         </ProSidebar>
       </div>
     </>
