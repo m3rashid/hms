@@ -4,6 +4,15 @@ body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  scrollbar-width: none;
+}
+
+body {
+  background-color: #eeeeee;
+}
+
+*::-webkit-scrollbar {
+  display: none;
 }
 
 a {
@@ -13,20 +22,4 @@ a {
 
 * {
   box-sizing: border-box;
-}
-
-.leftSidebarInnerContainer {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  width: 100%;
-  gap: "20px";
-  margin-bottom: 10px;
-  padding: 5px;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-.leftSidebarInnerContainer:hover {
-  background-color: "rgba(231, 245, 255, 1)";
 }

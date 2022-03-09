@@ -1,8 +1,10 @@
 import React from "react";
-import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
-import Select from "react-select";
+import { Button, Modal, ModalBody } from "reactstrap";
+import Select, { NonceProvider } from "react-select";
+import { AiOutlineClose } from "react-icons/ai";
 
 import classes from "./login.module.css";
+import { toast } from "react-toastify";
 
 const loginUser = async (formData) => {
   const response = await fetch("/api/login", {
@@ -19,15 +21,33 @@ const loginUser = async (formData) => {
   return data;
 };
 
+const customSelectStyles = {
+  control: (base, state) => ({
+    ...base,
+    border: 0,
+    outline: 0,
+    borderBottom: "1px solid #ccc",
+    fontSize: "0.9rem",
+    marginTop: "10px",
+  }),
+  option: (base, state) => ({
+    ...base,
+    fontSize: "0.9rem",
+  }),
+  singleValue: (base, state) => ({
+    ...base,
+    fontSize: "0.9rem",
+  }),
+};
+
 const options = [
-  { value: "", label: "Select role" },
   { value: "ADMIN", label: "ADMIN" },
   { value: "DOCTOR", label: "DOCTOR" },
   { value: "RECEPTIONIST", label: "RECEPTIONIST" },
   { value: "PHARMACIST", label: "PHARMACIST" },
 ];
 
-const Login = () => {
+const Login = ({ toggleModal }) => {
   const [loading, setLoading] = React.useState(false);
   const [formData, setFormData] = React.useState({
     username: "",
@@ -55,45 +75,49 @@ const Login = () => {
     }));
   };
 
+  const showLoadingToast = () => {
+    toast.loading("Logging you in");
+  };
+
   return (
     <>
-      {loading && <div>Loading...</div>}
+      {/* make sure there is only one loading toast on the screen */}
+      {loading && showLoadingToast()}
+      <button className={classes["cancel-button"]} onClick={toggleModal}>
+        <AiOutlineClose />
+      </button>
       <h2>Login</h2>
       <form onSubmit={handleLogin}>
-        <label>
-          Username:
-          <input
-            type="text"
-            name="username"
-            onChange={handleChange}
-            placeholder="username"
-            required
-          />
-        </label>
-        <br />
-        <br />
-        <label>
-          Password:
-          <input
-            type="password"
-            name="password"
-            onChange={handleChange}
-            placeholder="password"
-            required
-          />
-        </label>
-        <br />
-        <br />
-        <Select options={options} />
-        <br />
-        <br />
-        <button type="submit">Login</button>
+        <input
+          type="text"
+          name="username"
+          onChange={handleChange}
+          placeholder="Enter Username"
+          required
+          className={classes["input"]}
+        />
+        <input
+          type="password"
+          name="password"
+          onChange={handleChange}
+          placeholder="password"
+          required
+          className={classes["input"]}
+        />
+        <Select
+          styles={customSelectStyles}
+          theme="primary25"
+          options={options}
+        />
+        <button className={classes["submit-button"]} type="submit">
+          Login
+        </button>
       </form>
     </>
   );
 };
 
-const LoginModal = ({ buttonLabel }) => {
+const LoginModal = () => {
   const [open, setOpen] = React.useState(false);
 
   const toggleModal = () => {
@@ -101,30 +125,17 @@ const LoginModal = ({ buttonLabel }) => {
   };
 
   return (
-    <div>
-      <div>
-        <Button color="danger" onClick={toggleModal}>
-          {buttonLabel || "Login"}
-        </Button>
-        <Modal
-          isOpen={open}
-          toggle={toggleModal}
-          className=""
-          style={{
-            backgroundColor: "white",
-            border: "2px solid black",
-            margin: "20px",
-            padding: "20px",
-          }}
-        >
-          <ModalBody>
-            <Login />
-            <Button color="secondary" onClick={toggleModal}>
-              Cancel
-            </Button>
-          </ModalBody>
-        </Modal>
-      </div>
+    <div className={classes["login-div"]}>
+      <button onClick={toggleModal}>Login</button>
+      <Modal
+        isOpen={open}
+        toggle={toggleModal}
+        className={classes["login-modal"]}
+      >
+        <ModalBody>
+          <Login toggleModal={toggleModal} />
+        </ModalBody>
+      </Modal>
     </div>
   );
 };
