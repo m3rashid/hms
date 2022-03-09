@@ -4,6 +4,7 @@ import { useRouter } from "next/router";
 
 import DetailCard from "../components/card/card";
 
+
 const containerStyle = {
   display: "flex",
   justifyContent: "center",
@@ -15,6 +16,9 @@ const containerStyle = {
 const Home = () => {
   const router = useRouter();
   const userLoggedIn = true;
+
+
+
 
   const handleAuth = (e) => {
     const type = e.target.innerText.toLowerCase();
@@ -69,3 +73,12 @@ const Home = () => {
 };
 
 export default Home;
+
+export async function getServerSideProps() {
+
+    return {
+      props: {
+      }
+    }
+
+}

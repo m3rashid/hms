@@ -1,5 +1,8 @@
 import NextAuth from "next-auth/next";
 import CredentialsProvider from "next-auth/providers/credentials";
+import { PrismaClient } from "@prisma/client";
+
+const prisma = new PrismaClient();
 
 export default NextAuth({
   session: {
@@ -20,12 +23,20 @@ export default NextAuth({
       },
       async authorize(credentials, req) {
         // look for user in the database
-        const user = undefined;
+        const user = await prisma.auth.findOne({
+          where: {
+            username: credentials.username,
+          }
+        });
+
+        console.log(user);
+
         if (user) {
           const isValid = await verifyPassword(
             credentials.password,
             user.password
           );
+
           if (!isValid) {
             throw new Error("Could not verify password");
           }
@@ -36,7 +47,7 @@ export default NextAuth({
         } else {
           throw new Error("User not found");
         }
-      },
+      }
     }),
   ],
 });
