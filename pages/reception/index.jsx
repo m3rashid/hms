@@ -9,6 +9,7 @@ const Reception = () => {
    const props={
     profileName:'Reception',
     profileId:'RS78787',
+    profileImg:'reception'
    }
   return (
     <>
