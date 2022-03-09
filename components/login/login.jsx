@@ -68,6 +68,7 @@ const Login = ({ toggleModal }) => {
           styles={customSelectStyles}
           theme="primary25"
           options={options}
+          placeholder="Select Auth Level"
         />
         <button className={classes["submit-button"]} type="submit">
           Login

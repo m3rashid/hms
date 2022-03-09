@@ -1,25 +1,23 @@
 import React from "react";
 import Head from "next/head";
 
-import TopHead from "../../components/topHead";
 import ProfileBar from "../../components/profilebar";
-import ReceptionForm from "../../components/reception/reception";
+import CreatePatient from "../../components/reception/createPatient";
+import CreateAppointment from "../../components/reception/createAppointment";
 
 const Reception = () => {
-  const props = {
-    profileName: "Reception",
-    profileId: "RS78787",
-    profileImg: "reception",
-  };
-
   return (
     <>
       <Head>
         <title>Reception - Ansari hospital</title>
       </Head>
-      {/* <TopHead /> */}
-      <ProfileBar {...props} />
-      <ReceptionForm />
+      <ProfileBar
+        profileName="Reception"
+        profileId="RS78787"
+        profileImg="/images/reception.jpg"
+      />
+      <CreatePatient />
+      <CreateAppointment />
     </>
   );
 };
