@@ -54,7 +54,7 @@ const Sidebar = () => {
               <Link href="/patient" passHref>
                 <MenuItem icon={<FaUserAlt />}>Patient</MenuItem>
               </Link>
-              {admin && <div className="admin-break"></div>}
+              {admin && <div className={classes["admin-break"]}></div>}
               <Link href="/admin" passHref>
                 <MenuItem icon={<FaUserCog />}>
                   Admin {admin && "Home"}
