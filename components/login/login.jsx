@@ -18,13 +18,17 @@ const Login = ({ toggleModal }) => {
   const handleLogin = async (e) => {
     e.preventDefault();
     setLoading(true);
+    toast.loading("Logging you in");
     try {
       const result = await loginUser(formData);
       console.log(result);
     } catch (err) {
       console.log(err);
     } finally {
+      console.log("finally");
       setLoading(false);
+      toast.dismiss();
+      toggleModal();
     }
   };
 
@@ -35,14 +39,9 @@ const Login = ({ toggleModal }) => {
     }));
   };
 
-  const showLoadingToast = () => {
-    toast.loading("Logging you in");
-  };
-
   return (
     <>
       {/* make sure there is only one loading toast on the screen */}
-      {loading && showLoadingToast()}
       <button className={classes["cancel-button"]} onClick={toggleModal}>
         <AiOutlineClose />
       </button>
@@ -67,6 +66,12 @@ const Login = ({ toggleModal }) => {
         <Select
           styles={customSelectStyles}
           theme="primary25"
+          onChange={(value) => {
+            setFormData((prev) => ({
+              ...prev,
+              level: value.value,
+            }));   
+          }}
           options={options}
           placeholder="Select Auth Level"
         />
