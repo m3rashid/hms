@@ -38,64 +38,69 @@ model Receptionist {
 }
 
 model Doctor {
-  id           String        @id @default(uuid())
+  id           String         @id @default(uuid())
   name         String
   availability Boolean
   age          Int
   designation  String
   contact      String
-  email        String        @unique
+  email        String         @unique
   address      String
-  auth         Auth          @relation(fields: [authId], references: [id])
+  auth         Auth           @relation(fields: [authId], references: [id])
   authId       String
-  createdAt    DateTime      @default(now())
-  updatedAt    DateTime      @default(now())
+  createdAt    DateTime       @default(now())
+  updatedAt    DateTime       @default(now())
   Appointment  Appointment[]
+  Prescription Prescription[]
 }
 
 model Patient {
-  id          String        @id @default(uuid())
-  name        String
-  age         Int
-  gender      String
-  lastVisit   DateTime
-  contact     String
-  address     String
-  email       String
-  jamiaId     String
-  createdAt   DateTime      @default(now())
-  updatedAt   DateTime      @default(now())
-  Appointment Appointment[]
+  id           String         @id @default(uuid())
+  name         String
+  age          Int
+  gender       String
+  lastVisit    DateTime
+  contact      String
+  address      String
+  email        String
+  jamiaId      String
+  createdAt    DateTime       @default(now())
+  updatedAt    DateTime       @default(now())
+  Appointment  Appointment[]
+  Prescription Prescription[]
 }
 
 model Prescription {
   id             String   @id @default(uuid())
   patientId      String
+  patient        Patient  @relation(fields: patientId, references: id)
   doctorId       String
-  appointmentId  String
-  description    String
+  doctor         Doctor   @relation(fields: doctorId, references: id)
   medicineId     String
+  medicines      Medicine @relation(fields: [medicineId], references: id)
+  description    String
   datePrescribed DateTime
   dateExpiring   DateTime
   createdAt      DateTime @default(now())
   updatedAt      DateTime @default(now())
 }
 
+model Medicine {
+  id           String         @id @default(uuid())
+  name         String
+  price        Decimal
+  Prescription Prescription[]
+}
+
 model Appointment {
   id        String   @id @default(uuid())
-  patient   Patient  @relation(fields: [patientId], references: [id])
   patientId String
-  doctor    Doctor   @relation(fields: [doctorId], references: [id])
+  patient   Patient  @relation(fields: [patientId], references: [id])
   doctorId  String
+  doctor    Doctor   @relation(fields: [doctorId], references: [id])
   date      DateTime
   createdAt DateTime @default(now())
   updatedAt DateTime @default(now())
-}
-
-model Medicine {
-  id    String  @id @default(uuid())
-  name  String
-  price Decimal
 }
 
 model Pharmacy {
