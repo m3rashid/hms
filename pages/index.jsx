@@ -3,6 +3,7 @@ import Head from "next/head";
 import { useRouter } from "next/router";
 
 import DetailCard from "../components/card/card";
+import "react-bootstrap-table-next/dist/react-bootstrap-table2.min.css";
 
 const containerStyle = {
   display: "flex",
