@@ -18,7 +18,7 @@ const Login = ({ toggleModal }) => {
   const handleLogin = async (e) => {
     e.preventDefault();
     setLoading(true);
-    toast.loading("Logging you in");
+    toast.loading("Logging you in ...");
     try {
       const result = await loginUser(formData);
       console.log(result);
@@ -40,7 +40,7 @@ const Login = ({ toggleModal }) => {
   };
 
   return (
-    <>
+    <div>
       {/* make sure there is only one loading toast on the screen */}
       <button className={classes["cancel-button"]} onClick={toggleModal}>
         <AiOutlineClose />
@@ -70,7 +70,7 @@ const Login = ({ toggleModal }) => {
             setFormData((prev) => ({
               ...prev,
               level: value.value,
-            }));   
+            }));
           }}
           options={options}
           placeholder="Select Auth Level"
@@ -79,11 +79,12 @@ const Login = ({ toggleModal }) => {
           Login
         </button>
       </form>
-    </>
+    </div>
   );
 };
 
 const LoginModal = () => {
+  const loginRef = React.useRef();
   const [open, setOpen] = React.useState(false);
 
   const toggleModal = () => {
@@ -91,7 +92,7 @@ const LoginModal = () => {
   };
 
   return (
-    <div className={classes["login-div"]}>
+    <div className={classes["login-div"]} ref={loginRef}>
       <button onClick={toggleModal}>Login</button>
       <Modal
         isOpen={open}

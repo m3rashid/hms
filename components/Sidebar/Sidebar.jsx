@@ -51,9 +51,9 @@ const Sidebar = () => {
               <Link href="/pharmacy" passHref>
                 <MenuItem icon={<FaStoreAlt />}>Pharmacy</MenuItem>
               </Link>
-              <Link href="/patient" passHref>
+              {/* <Link href="/patient" passHref>
                 <MenuItem icon={<FaUserAlt />}>Patient</MenuItem>
-              </Link>
+              </Link> */}
               {admin && <div className={classes["admin-break"]}></div>}
               <Link href="/admin" passHref>
                 <MenuItem icon={<FaUserCog />}>
