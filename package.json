@@ -10,9 +10,6 @@
   "bugs": {
     "url": "https://github.com/m3rashid/hms/issues"
   },
-  "engines": {
-    "node": ">=16.13.2"
-  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
