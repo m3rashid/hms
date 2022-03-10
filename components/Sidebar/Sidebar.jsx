@@ -18,16 +18,18 @@ import { FiHome, FiLogOut } from "react-icons/fi";
 import { BiCog } from "react-icons/bi";
 import "react-pro-sidebar/dist/css/styles.css";
 import { useRouter } from "next/router";
+import { useSession } from "next-auth/react";
 
 import classes from "./Sidebar.module.css";
 
 const Sidebar = () => {
-  const router = useRouter();
-  // check for user logged in
+  const { data: session, status } = useSession();
   const user = {
     loggedIn: true,
     level: "ADMIN",
   };
+
+  console.log({ session, status });
 
   const admin = user.loggedIn && user.level === "ADMIN";
 
