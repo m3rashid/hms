@@ -3,12 +3,12 @@ import { Modal, ModalBody } from "reactstrap";
 import Select from "react-select";
 import { AiOutlineClose } from "react-icons/ai";
 import { toast } from "react-toastify";
+import { signIn } from "next-auth/react";
 
-import { customSelectStyles, loginUser, options } from "./login.helpers";
+import { customSelectStyles, options } from "./login.helpers";
 import classes from "./login.module.css";
 
 const Login = ({ toggleModal }) => {
-  const [loading, setLoading] = React.useState(false);
   const [formData, setFormData] = React.useState({
     username: "",
     password: "",
@@ -17,19 +17,15 @@ const Login = ({ toggleModal }) => {
 
   const handleLogin = async (e) => {
     e.preventDefault();
-    setLoading(true);
     toast.loading("Logging you in ...");
-    try {
-      const result = await loginUser(formData);
-      console.log(result);
-    } catch (err) {
-      console.log(err);
-    } finally {
-      console.log("finally");
-      setLoading(false);
-      toast.dismiss();
-      toggleModal();
-    }
+    const result = await signIn("credentials", {
+      redirect: false,
+      ...formData,
+    });
+
+    console.log(result);
+    toast.dismiss();
+    toggleModal();
   };
 
   const handleChange = (e) => {
@@ -41,7 +37,6 @@ const Login = ({ toggleModal }) => {
 
   return (
     <div>
-      {/* make sure there is only one loading toast on the screen */}
       <button className={classes["cancel-button"]} onClick={toggleModal}>
         <AiOutlineClose />
       </button>
