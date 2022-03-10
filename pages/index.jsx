@@ -4,7 +4,6 @@ import { useRouter } from "next/router";
 
 import DetailCard from "../components/card/card";
 
-
 const containerStyle = {
   display: "flex",
   justifyContent: "center",
@@ -16,9 +15,6 @@ const containerStyle = {
 const Home = () => {
   const router = useRouter();
   const userLoggedIn = true;
-
-
-
 
   const handleAuth = (e) => {
     const type = e.target.innerText.toLowerCase();
@@ -36,9 +32,9 @@ const Home = () => {
       </Head>
       <div style={containerStyle}>
         <Image
-          src="/images/hospital.jpeg"
+          src="/images/center.jpg"
           alt="hospital"
-          height={353}
+          height={300}
           width={1280}
         />
       </div>
@@ -75,10 +71,7 @@ const Home = () => {
 export default Home;
 
 export async function getServerSideProps() {
-
-    return {
-      props: {
-      }
-    }
-
+  return {
+    props: {},
+  };
 }
