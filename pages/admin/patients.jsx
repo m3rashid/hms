@@ -68,11 +68,18 @@ const columns = [
 const Patients = () => {
   return (
     <>
-      <div>
-        <h2>Patients Data</h2>
+      <div
+        className={`d-flex flex-column justify-content-center align-items-center`}
+      >
+        <h2
+          className={`my-3`}
+        >Patients Data</h2>
       </div>
-      <div>
+      <div 
+        className="admin-table"
+      >
         <BootstrapTable
+          wrapperClasses="m-3 shadow-sm"
           keyField="id"
           data={products}
           columns={columns}

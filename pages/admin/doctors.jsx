@@ -53,18 +53,27 @@ const columns = [
 
 const Doctors = () => {
   return (
-    <>
-    <div><h2>Doctors Data</h2></div>
-    <div>
-        <BootstrapTable
-          keyField="id"
-          data={products}
-          columns={columns}
-          hover
-          bordered
+      <>
+        <div
+            className={`d-flex flex-column justify-content-center align-items-center`}
+        >
+          <h2
+              className={`my-3`}
+          >Doctors Data</h2>
+        </div>
+        <div
+            className="admin-table"
+        >
+          <BootstrapTable
+              wrapperClasses="m-3 shadow-sm"
+              keyField="id"
+              data={products}
+              columns={columns}
+              hover
+              bordered
           />
-      </div>
-    </>
+        </div>
+      </>
   );
 };
 
