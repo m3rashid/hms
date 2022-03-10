@@ -1,0 +1,55 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;1,100;1,200;1,300;1,400;1,500;1,600&display=swap');
+
+$primary-color: #62a9f6;
+$theme-colors: (
+  "primary": #62a9f6,
+  "secondary": #f6f6f6,
+  "danger": #ff4136
+);
+
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+@import '~bootstrap/scss/bootstrap.scss';
+
+.btn{
+  outline: none;
+  border: none;
+  font-weight: 600;
+
+}
+
+.btn-primary{
+  color: white;
+}
+
+
+.admin-table{
+  table{
+    font-size: 0.9rem;
+    thead{
+      tr {
+        background-color: $primary-color;
+        border: 2px solid $primary-color;
+        border-radius: 5px;
+        th {
+
+          color: white;
+          font-weight: 300;
+          text-align: center;
+        }
+      }
+    }
+    tbody{
+      tr{
+        text-align: center;
+        color: #00000095;
+      }
+    }
+  }
+}
