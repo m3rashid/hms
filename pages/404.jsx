@@ -1,4 +1,4 @@
-import React from "react";
+// import React from "react";
 
 // custom 404 page
 const NotFound = () => {
