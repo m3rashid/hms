@@ -3,6 +3,8 @@ import Select from "react-select";
 
 import classes from "./reception.module.css";
 import { customSelectStyles } from "../login/login.helpers";
+import {Button} from "reactstrap";
+import axios from "axios";
 
 const options = [
   { name: "gender", value: "MALE", label: "MALE" },
@@ -82,13 +84,28 @@ const CreatePatient = () => {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
+    console.log(formData);
     e.preventDefault();
+    try {
+      const response = await axios.post('/api/patient/add', formData);
+      console.log(response);
+    } catch (error) {
+      console.log(error);
+    }
+
+
   };
 
   return (
-    <div>
-      <form action="" method="post" onSubmit={handleSubmit}>
+    <div
+    >
+      <form
+          action=""
+          className={`p-2 px-4`}
+          method="post"
+          onSubmit={handleSubmit}
+      >
         <Select
           theme="primary25"
           placeholder="Select gender"
@@ -122,9 +139,11 @@ const CreatePatient = () => {
           onFocus={() => setDateType(true)}
           onBlur={() => setDateType(false)}
         />
-        <button type="submit" className={classes["submit-button"]}>
+        <Button type="submit" color={"primary"}
+          className={`m-3`}
+        >
           Add Patient
-        </button>
+        </Button>
       </form>
     </div>
   );

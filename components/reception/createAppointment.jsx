@@ -33,7 +33,12 @@ const CreateAppointment = () => {
 
   return (
     <div>
-      <form action="" method="post" onSubmit={handleSubmission}>
+      <form
+          action=""
+          method="post"
+          onSubmit={handleSubmission}
+      >
+
         <Select
           theme="primary25"
           placeholder="Select Patient"

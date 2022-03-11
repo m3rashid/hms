@@ -1,11 +1,13 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;1,100;1,200;1,300;1,400;1,500;1,600&display=swap");
 
 $primary-color: #62a9f6;
+
 $theme-colors: (
   "primary": #62a9f6,
   "secondary": #f6f6f6,
   "danger": #ff4136,
 );
+@import "~bootstrap/scss/bootstrap.scss";
 
 * {
   margin: 0;
@@ -14,17 +16,37 @@ $theme-colors: (
   font-family: "Poppins", sans-serif;
 }
 
-@import "~bootstrap/scss/bootstrap.scss";
 
 .btn {
   outline: none;
   border: none;
-  font-weight: 600;
+  transition: all 0.3s ease-in-out;
+  &:hover {
+    transform: translateY(-1px);
+    filter: contrast(90%);
+  }
+
+
+  &:focus {
+    outline: none;
+    box-shadow: none;
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
 }
 
 .btn-primary {
   color: white;
+  &:hover, &:focus {
+    color: white;
+    background-color: $primary-color;
+  }
+
 }
+
+
 
 .admin-table {
   table {
