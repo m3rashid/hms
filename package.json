@@ -10,11 +10,24 @@
   "bugs": {
     "url": "https://github.com/m3rashid/hms/issues"
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx}": "eslint --cache --fix"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "prepare": "husky install",
+    "check:format": "prettier --check .",
+    "check:lint": "eslint . --ext .ts --ext .js",
+    "format": "prettier --write .",
+    "check:all": "yarn check:format && yarn check:lint && yarn build"
   },
   "dependencies": {
     "@prisma/client": "^3.10.0",
@@ -35,7 +48,12 @@
   },
   "devDependencies": {
     "eslint": "8.10.0",
+    "eslint-config-google": "^0.14.0",
     "eslint-config-next": "12.1.0",
+    "eslint-config-prettier": "^8.5.0",
+    "husky": "^7.0.4",
+    "lint-staged": "^12.3.5",
+    "prettier": "^2.5.1",
     "prisma": "^3.10.0"
   }
 }
