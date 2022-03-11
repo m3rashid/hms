@@ -1,11 +1,11 @@
-import NextAuth from "next-auth/next";
-import CredentialsProvider from "next-auth/providers/credentials";
+import nextAuth from "next-auth/next";
+import credentialsProvider from "next-auth/providers/credentials";
 import { PrismaClient } from "@prisma/client";
 
 import { verifyPassword } from "../../../utils/auth";
 const prisma = new PrismaClient();
 
-export default NextAuth({
+export default nextAuth({
   session: {
     jwt: true,
   },
@@ -20,7 +20,7 @@ export default NextAuth({
     },
   },
   providers: [
-    CredentialsProvider({
+    credentialsProvider({
       async authorize(credentials, req) {
         const user = await prisma.auth.findFirst({
           where: {

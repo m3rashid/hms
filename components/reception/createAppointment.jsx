@@ -27,9 +27,13 @@ const CreateAppointment = () => {
     }));
   };
 
+  const handleSubmission = () => {
+    console.log(formData);
+  };
+
   return (
     <div>
-      <form action="" method="post">
+      <form action="" method="post" onSubmit={handleSubmission}>
         <Select
           theme="primary25"
           placeholder="Select Patient"

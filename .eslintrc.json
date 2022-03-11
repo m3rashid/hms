@@ -1,3 +1,16 @@
 {
-  "extends": "next/core-web-vitals"
+  "env": {
+    "es2021": true,
+    "node": true
+  },
+  "extends": ["next", "google", "prettier"],
+  "parserOptions": {
+    "ecmaVersion": 6,
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "modules": true
+    }
+  },
+  "rules": {},
+  "root": true
 }

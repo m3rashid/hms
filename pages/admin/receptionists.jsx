@@ -35,27 +35,23 @@ const columns = [
 ];
 const Receptionists = () => {
   return (
-      <>
-        <div
-            className={`d-flex flex-column justify-content-center align-items-center`}
-        >
-          <h2
-              className={`my-3`}
-          >Receptionists Data</h2>
-        </div>
-        <div
-            className="admin-table"
-        >
-          <BootstrapTable
-              wrapperClasses="m-3 shadow-sm"
-              keyField="id"
-              data={products}
-              columns={columns}
-              hover
-              bordered
-          />
-        </div>
-      </>
+    <>
+      <div
+        className={`d-flex flex-column justify-content-center align-items-center`}
+      >
+        <h2 className={`my-3`}>Receptionists Data</h2>
+      </div>
+      <div className="admin-table">
+        <BootstrapTable
+          wrapperClasses="m-3 shadow-sm"
+          keyField="id"
+          data={products}
+          columns={columns}
+          hover
+          bordered
+        />
+      </div>
+    </>
   );
 };
 

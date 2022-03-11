@@ -7,17 +7,10 @@ import {
   SidebarContent,
 } from "react-pro-sidebar";
 import Link from "next/link";
-import {
-  FaStoreAlt,
-  FaRegHeart,
-  FaSignal,
-  FaUserAlt,
-  FaUserCog,
-} from "react-icons/fa";
+import { FaStoreAlt, FaRegHeart, FaSignal, FaUserCog } from "react-icons/fa";
 import { FiHome, FiLogOut } from "react-icons/fi";
 import { BiCog } from "react-icons/bi";
 import "react-pro-sidebar/dist/css/styles.css";
-import { useRouter } from "next/router";
 import { useSession } from "next-auth/react";
 
 import classes from "./Sidebar.module.css";

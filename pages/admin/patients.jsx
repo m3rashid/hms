@@ -71,13 +71,9 @@ const Patients = () => {
       <div
         className={`d-flex flex-column justify-content-center align-items-center`}
       >
-        <h2
-          className={`my-3`}
-        >Patients Data</h2>
+        <h2 className={`my-3`}>Patients Data</h2>
       </div>
-      <div 
-        className="admin-table"
-      >
+      <div className="admin-table">
         <BootstrapTable
           wrapperClasses="m-3 shadow-sm"
           keyField="id"

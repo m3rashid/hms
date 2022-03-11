@@ -21,7 +21,7 @@ const handler = async (req, res) => {
         res.status(409).json({ message: "Username already exists" });
         return;
       }
-      let hashedPassword = await hashPassword(password);
+      const hashedPassword = await hashPassword(password);
       const newUser = await prisma["auth"].create({
         data: {
           username: username,
