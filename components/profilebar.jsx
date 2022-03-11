@@ -1,5 +1,4 @@
 import React from "react";
-import "bootstrap/dist/css/bootstrap.min.css";
 import { Navbar, NavbarBrand, NavItem, Nav } from "reactstrap";
 
 import * as profileBarStyles from "./styles/profileBar.module.css";
