@@ -16,7 +16,6 @@ $theme-colors: (
   font-family: "Poppins", sans-serif;
 }
 
-
 .btn {
   outline: none;
   border: none;
@@ -25,7 +24,6 @@ $theme-colors: (
     transform: translateY(-1px);
     filter: contrast(90%);
   }
-
 
   &:focus {
     outline: none;
@@ -39,14 +37,12 @@ $theme-colors: (
 
 .btn-primary {
   color: white;
-  &:hover, &:focus {
+  &:hover,
+  &:focus {
     color: white;
     background-color: $primary-color;
   }
-
 }
-
-
 
 .admin-table {
   table {
