@@ -21,3 +21,22 @@
 .outer .login {
   margin-right: 15px;
 }
+.outer .inner {
+  margin-left: 15px;
+
+  display: flex;
+}
+
+.outer .Img {
+  margin-left: 15px;
+  padding: 0px;
+  border-radius: 100%;
+  cursor: pointer;
+}
+
+.outer .inner .title {
+  font-size: 25px;
+  margin-left: 5px;
+  color: antiquewhite;
+  padding: 10px;
+}
